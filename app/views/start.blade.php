@@ -12,6 +12,7 @@
 {{ Form::open(array('route' => 'start_session')) }}
   <h3 class="no-margin"><span class="text-primary">{{{ $user->first_name }}}</span> {{{ $user->last_name }}}</h3>
   <h3 class="no-margin"><small>{{{ $user->enrolment_number }}}</small></h3>
+  <h4 class="no-margin"><small>{{ $user->username }}</small></h4>
   <br/>
   <button type="submit" class="btn btn-lg btn-primary"><strong>Let's begin <i class="fa fa-angle-right"></i></strong></button>
 {{ Form::close() }}

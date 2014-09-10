@@ -15,21 +15,21 @@
         <form role="form">
           <div class="form-group text-left">
             <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required autocomplete="off">
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ Input::old('first_name') }}" required autocomplete="off">
           </div>
           <div class="form-group text-left">
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required autocomplete="off">
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ Input::old('last_name') }}" required autocomplete="off">
           </div>
           <hr/>
           <div class="form-group text-left">
             <label for="enrolment_number">Enrolment Number</label>
-            <input type="number" class="form-control" id="enrolment_number" name="enrolment_number" required autocomplete="off">
+            <input type="number" class="form-control" id="enrolment_number" name="enrolment_number" value="{{ Input::old('enrolment_number') }}" required autocomplete="off">
           </div>
           <hr/>
           <div class="form-group text-left">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required autocomplete="off">
+            <input type="text" class="form-control" id="username" name="username" value="{{ Input::old('username') }}" required autocomplete="off">
           </div>
           <div class="form-group text-left">
             <label for="pasword">Password</label>

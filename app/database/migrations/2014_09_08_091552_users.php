@@ -5,39 +5,43 @@ use Illuminate\Database\Migrations\Migration;
 
 class Users extends Migration {
 
-	public function up() {
-		Schema::create('users', function($table) {
-			$table->increments('id')->unsigned();
-			$table->string('username');
-			$table->string('password');
+    public function up() {
+        Schema::create('users', function($table) {
+            // ID AND PASSWORD
+            $table->increments('id')->unsigned();
+            $table->string('username');
+            $table->string('password');
 
-			$table->string('remember_token')->nullable();
+            // USER DATA
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('enrolment_number')->nullable();
 
-			$table->string('first_name')->nullable();
-			$table->string('last_name')->nullable();
+            // USER'S CURRENT QUESTION AND QUESTION NUMBER
+            $table->integer('question_id')->default(0)->unsigned();
+            $table->integer('question_number')->default(0)->unsigned();
 
-			$table->string('enrolment_number')->nullable();
+            // QUESTION TRACK
+            $table->text('question_track')->nullable();
 
-			$table->integer('question_id')->default(0)->unsigned();
-			$table->integer('questions_served_count')->default(0)->unsigned();
+            // POINTS
+            $table->integer('score')->default(0);
 
-			$table->text('questions_served');
-			$table->text('questions_track');
+            // COUNTS
+            $table->integer('correct_count')->default(0)->unsigned();
+            $table->integer('incorrect_count')->default(0)->unsigned();
 
-			$table->integer('points')->default(0);
+            // TIMESTAMPS
+            $table->timestamp('started_on')->nullable();
+            $table->timestamp('ended_on')->nullable();
 
-			$table->integer('correct_answers')->default(0)->unsigned();
-			$table->integer('incorrect_answers')->default(0)->unsigned();
-			$table->integer('skipped_questions')->default(0)->unsigned();
+            // REMEMBER ME
+            $table->string('remember_token')->nullable();
+        });
+    }
 
-			$table->boolean('done')->default(false);
-			$table->timestamp('started_on')->nullable();
-			$table->timestamp('ended_on')->nullable();
-		});
-	}
-
-	public function down() {
-		Schema::drop('users');
-	}
+    public function down() {
+        Schema::drop('users');
+    }
 
 }

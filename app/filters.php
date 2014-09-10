@@ -33,17 +33,33 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('in-progress', function() {
+	$user = Auth::user();
+
+    if( ! is_null($user->ended_on)) {
+        // COMPLETED
+        return Response::json(array('redirect' => route('result')));
+    } else if( ! is_null($user->started_on)) {
+        // RETURNING USER
+        // IN-COMPLETE
+        // CONTINUE
+    } else {
+        // NEW FRESH USER
+        return Response::json(array('redirect' => route('start')));
+    }
+});
+
 Route::filter('auth', function()
 {
 	if (Auth::guest())
 	{
 		if (Request::ajax())
 		{
-			return Response::make('Unauthorized', 401);
+			return Response::json(array('redirect' => route('home')));
 		}
 		else
 		{
-			return Redirect::guest('/');
+			return Redirect::route('home');
 		}
 	}
 });

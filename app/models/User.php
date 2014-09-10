@@ -15,24 +15,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = false;
 
-    public function getQuestionsServedAttribute($value) {
-        $t = unserialize($value);
-        if($t) return $t;
-        else return array();
+    public function getQuestionTrackAttribute($value) {
+        Log::info($value);
+        if(is_null($value)) return array();
+        return unserialize($value);
     }
 
-    public function getQuestionsTrackAttribute($value) {
-        $t = unserialize($value);
-        if($t) return $t;
-        else return array();
-    }
-
-    public function setQuestionsServedAttribute($value) {
-        $this->attributes['questions_served'] = serialize($value);
-    }
-
-    public function setQuestionsTrackAttribute($value) {
-        $this->attributes['questions_track'] = serialize($value);
+    public function setQuestionTrackAttribute($value) {
+        $this->attributes['question_track'] = serialize($value);
     }
 
     public function resetMe() {
@@ -45,7 +35,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $this->questions_served_count = 0;
 
         $this->questions_served = NULL;
-        $this->questions_track = NULL;
+        $this->question_track = NULL;
 
         $this->points = 0;
 
@@ -56,6 +46,35 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $this->done = false;
         $this->started_on = NULL;
         $this->ended_on = NULL;
+    }
+
+    public function correctAnswer($multiplier) {
+        $this->correct_count++;
+        $this->score += $this->correct_count * $multiplier;
+    }
+
+    public function incorrectAnswer($multiplier) {
+        $this->incorrect_count++;
+        $this->score -= $this->incorrect_count * $multiplier;
+    }
+
+    public function setScore() {
+        $t = $this->question_track;
+        $t[$this->question_number] = $this->score;
+        $this->question_track = $t;
+    }
+
+    public function setNextQuestion($question) {
+        $this->question_number++;
+        $this->question_id = $question->id;
+    }
+
+    public function start() {
+        $this->started_on = new \DateTime();
+    }
+
+    public function finish() {
+        $this->ended_on = new \DateTime();
     }
 
 }

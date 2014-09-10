@@ -3,12 +3,12 @@ $(window).on('first_answer', function(e, n, v) {
     labels: [ "Start", n ],
     datasets : [
       {
-        fillColor: "rgba(220,220,220,0.2)",
+        fillColor: "#eee",
         strokeColor: "#16a085",
-        pointColor: "#16a085",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        pointColor: "#fff",
+        pointStrokeColor: "#16a085",
+        pointHighlightFill: "#555",
+        pointHighlightStroke: "#16a085",
         data: [0, v]
       }
     ]
@@ -17,7 +17,8 @@ $(window).on('first_answer', function(e, n, v) {
   window.chart = new Chart(ctx).Line(chartData, {
     responsive : true,
     scaleShowGridLines : false,
-    bezierCurve: true
+    bezierCurve: true,
+    pointDotStrokeWidth : 2
   });
 });
 
@@ -41,12 +42,12 @@ $(window).on('fill_answer', function(e, val) {
     labels: keys,
     datasets : [
       {
-        fillColor: "rgba(220,220,220,0.2)",
+        fillColor: "#eee",
         strokeColor: "#16a085",
-        pointColor: "#16a085",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        pointColor: "#fff",
+        pointStrokeColor: "#16a085",
+        pointHighlightFill: "#555",
+        pointHighlightStroke: "#16a085",
         data: vals
       }
     ]
@@ -55,6 +56,7 @@ $(window).on('fill_answer', function(e, val) {
   window.chart = new Chart(ctx).Line(chartData, {
     responsive : true,
     scaleShowGridLines : false,
-    bezierCurve: true
+    bezierCurve: true,
+    pointDotStrokeWidth : 2
   });
 });

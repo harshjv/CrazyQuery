@@ -7,20 +7,28 @@ class UserController extends BaseController {
     if(Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password')), false)) {
       $user = Auth::user();
 
-      if( ! ($user->first_name && $user->last_name && $user->enrolment_number)) {
-        $user->first_name = ucfirst(strtolower(self::spaces(Input::get('first_name'))));
-        $user->last_name = ucfirst(strtolower(self::spaces(Input::get('last_name'))));
-        $user->enrolment_number = ucfirst(strtolower(self::spaces(Input::get('enrolment_number'))));
-        $user->save();
-      }
+      if( ! is_null($user->ended_on)) {
+        // COMPLETED
+        return Redirect::route('result');
+        } else if( ! is_null($user->started_on)) {
+            // RETURNING USER
+            // IN-COMPLETE
+            // CONTINUE
+            return Redirect::route('arena');
+        } else {
+            // NEW FRESH USER
+            $user->first_name = ucfirst(strtolower(self::spaces(Input::get('first_name'))));
+            $user->last_name = ucfirst(strtolower(self::spaces(Input::get('last_name'))));
+            $user->enrolment_number = ucfirst(strtolower(self::spaces(Input::get('enrolment_number'))));
+            $user->save();
+        }
 
-      if(Hash::needsRehash($user->password)) {
-        $user->password = Hash::make(Input::get('password'));
-        $user->save();
-      }
+        if(Hash::needsRehash($user->password)) {
+            $user->password = Hash::make(Input::get('password'));
+            $user->save();
+        }
 
-      $user->save();
-      return Redirect::to('start');
+        return Redirect::to('start');
     }
     else {
       return Redirect::back()->withInput(Input::except('password'));

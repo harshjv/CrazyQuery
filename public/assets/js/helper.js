@@ -58,8 +58,8 @@ window.fillQuestionNumber = function(i) {
 };
 
 window.fillUpsAndDown = function(i) {
-  $('#right').text((parseInt(i.correct_answers) + 1) * 10);
-  $('#wrong').text((parseInt(i.incorrect_answers) + 1) * 10);
+  $('#right').text(i.correct_score);
+  $('#wrong').text(i.incorrect_score);
 };
 
 window.fillQuestion = function(question) {
