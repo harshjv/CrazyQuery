@@ -2,8 +2,8 @@
 
 @section('js')
   <script src="/assets/js/vendor/chart/chart.min.js"></script>
-  <script src="/assets/js/chart.js"></script>
-  <script src="/assets/js/result.js"></script>
+  <script src="/assets/js/chart.min.js"></script>
+  <script src="/assets/js/result.min.js"></script>
 @stop
 
 @section('body')

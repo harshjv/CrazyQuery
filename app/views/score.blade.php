@@ -1,21 +1,8 @@
 @extends('base.layout')
 
 @section('js')
-  <script src="/assets/js/helper.js"></script>
-  <script src="/assets/js/score.js"></script>
-@stop
-
-@section('css')
-  <style type="text/css">
-    body {
-      padding-top: 60px;
-    }
-
-    table.table-score tr td, table.table-score tr th {
-      vertical-align: middle;
-      text-align: center!important;
-    }
-  </style>
+  <script src="/assets/js/helper.min.js"></script>
+  <script src="/assets/js/score.min.js"></script>
 @stop
 
 @section('body')
@@ -26,7 +13,7 @@
     </div>
   </div>
 </div>
-<div class="container text-center">
+<div class="container text-center score-main">
   <h4><span class="text-primary">Score</span> Board</h4>
   <br/>
   <div class="table-responsive">
@@ -37,7 +24,7 @@
           <th class="hidden-print">Username</th>
           <th>Name</th>
           <th>Enrolment Number</th>
-          <th>Points</th>
+          <th>Score</th>
           <th class="hidden-print">Status</th>
         </tr>
       </thead>
@@ -48,7 +35,7 @@
         <td class="hidden-print">{{ $user->username }}</td>
         <td>{{{ $user->first_name }}} {{{ $user->last_name }}}</td>
         <td>{{{ $user->enrolment_number }}}</td>
-        <td>{{ $user->points }}</td>
+        <td>{{ $user->score }}</td>
         @if($user->done)
           <td class="hidden-print">Done</td>
         @else

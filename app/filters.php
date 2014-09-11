@@ -33,6 +33,28 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('incomplete', function() {
+
+    $user = Auth::user();
+
+    if( ! is_null($user->ended_on)) {
+        // COMPLETED
+        return Redirect::route('result');
+    }
+
+});
+
+Route::filter('complete', function() {
+
+    $user = Auth::user();
+
+    if(is_null($user->ended_on)) {
+        // IN-COMPLETE
+        return Redirect::route('start');
+    }
+
+});
+
 Route::filter('in-progress', function() {
 	$user = Auth::user();
 
@@ -83,7 +105,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::route('start');
 });
 
 /*
@@ -102,20 +124,5 @@ Route::filter('csrf', function()
 	if (Session::token() != Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;
-	}
-});
-
-
-Route::filter('reset_check', function() {
-	if(is_null(Auth::user()->first_name)) {
-		Auth::logout();
-		return Redirect::to('/');
-	}
-});
-
-
-Route::filter('in_progress', function() {
-	if(Auth::user()->done) {
-		return Redirect::to('result');
 	}
 });

@@ -533,11 +533,11 @@ array(
         ),
 //49
 array(
-            'title' => 'Five persons --- A, B, C, D and E are sitting in a row. Who is sitting in the middle?\n 
+            'title' => 'Five persons --- A, B, C, D and E are sitting in a row. Who is sitting in the middle?<br/> 
 
-                        I. B is in between E and C.\n 
+                        I. B is in between E and C.<br/> 
 
-                        II. B is to the right of E.\n
+                        II. B is to the right of E.<br/>
 
                         III. D is in between A and E. ',
             'answer' => 3,
@@ -550,7 +550,7 @@ array(
         ),
 //50
 array(
-            'title' => 'Amrith told to Anand in front of a photo that “He is the son of my father s son.\n
+            'title' => 'Amrith told to Anand in front of a photo that “He is the son of my father s son.<br/>
                          Find who is in the picture if Amrith have no brothers and sisters.',
             'answer' => 3,
             'options' => serialize(array(array('id' => 0, 'title' => 'Amrith himself'),
@@ -573,7 +573,7 @@ array(
         ),
 //52
 array(
-            'title' => 'Find X\'s age which equals the number of grand children of a man who has 4 sons and 4 daughters.\n
+            'title' => 'Find X\'s age which equals the number of grand children of a man who has 4 sons and 4 daughters.<br/>
                          Each daughter of the man\'s wife has 3 sons and 4 daughters and each son of the man \'s wife have 4 sons and 3 daughters',
             'answer' => 1,
             'options' => serialize(array(array('id' => 0, 'title' => '40'),
@@ -585,7 +585,7 @@ array(
         ),
 //53
 array(
-            'title' => 'A man have many daughters, each daughter have as many sons as her sisters. \n
+            'title' => 'A man have many daughters, each daughter have as many sons as her sisters. <br/>
                         The product of the number of daughters and grandsons of the man lies between 40 and 50. Find the number of daughters of the man.',
             'answer' => 1,
             'options' => serialize(array(array('id' => 0, 'title' => '6'),
@@ -630,9 +630,9 @@ array(
         ),
 //57
 array(
-            'title' => 'Tanya is older than Eric.\n
-                        Cliff is older than Tanya.\n
-                        Eric is older than Cliff.\n
+            'title' => 'Tanya is older than Eric.<br/>
+                        Cliff is older than Tanya.<br/>
+                        Eric is older than Cliff.<br/>
                         If the first two statements are true, the third statement is',
             'answer' => 1,
             'options' => serialize(array(array('id' => 0, 'title' => 'true'),
@@ -655,8 +655,8 @@ array(
         ),
 //59
 array(
-            'title' => '60 liters of diesel is required to travel 600 km using a 800 cc engine.\n
-                         If the volume of diesel required to cover a distance varies directly as the capacity of the engine,\n
+            'title' => '60 liters of diesel is required to travel 600 km using a 800 cc engine.<br/>
+                         If the volume of diesel required to cover a distance varies directly as the capacity of the engine,<br/>
                          then how many liters of diesel is required to travel 800 kms using 1200 cc engine?',
             'answer' => 2,
             'options' => serialize(array(array('id' => 0, 'title' => '80 liters'),
@@ -734,8 +734,8 @@ array(
         ),
 //66
 array(
-            'title' => 'If A + B means A is the mother of B; A - B means A is the brother B;\n
-                         A % B means A is the father of B and A x B means A is the sister of B,\n
+            'title' => 'If A + B means A is the mother of B; A - B means A is the brother B;<br/>
+                         A % B means A is the father of B and A x B means A is the sister of B,<br/>
                          which of the following shows that P is the maternal uncle of Q?',
             'answer' => 2,
             'options' => serialize(array(array('id' => 0, 'title' => 'Q - N + M x P'),
@@ -747,10 +747,10 @@ array(
         ),
 //67
 array(
-            'title' => '1.  B5D means B is the father of D.\n
-                        2.  B9D means B is the sister of D.\n
-                        3.  B4D means B is the brother of D.\n
-                        4.  B3D means B is the wife of D.\n
+            'title' => '1.  B5D means B is the father of D.<br/>
+                        2.  B9D means B is the sister of D.<br/>
+                        3.  B4D means B is the brother of D.<br/>
+                        4.  B3D means B is the wife of D.<br/>
                         Which of the following means F is the mother of K?',
             'answer' => 0,
             'options' => serialize(array(array('id' => 0, 'title' => 'F3M5K'),
@@ -762,7 +762,7 @@ array(
         ),
 //68
 array(
-            'title' => 'From his house, Lokesh went 15 km to the North. Then he turned west and covered 10 km. \n
+            'title' => 'From his house, Lokesh went 15 km to the North. Then he turned west and covered 10 km. <br/>
                         Then he turned south and covered 5 km. Finally turning to the east, he covered 10 km. In which direction is he from his house?',
             'answer' => 2,
             'options' => serialize(array(array('id' => 0, 'title' => 'East'),
@@ -774,7 +774,7 @@ array(
         ),
 //69
 array(
-            'title' => 'Amit started walking positioning his back towards the sun.\n 
+            'title' => 'Amit started walking positioning his back towards the sun.<br/> 
                         After some time, he turned left, then turned right and towards the left again. In which direction is he going now?',
             'answer' => 0,
             'options' => serialize(array(array('id' => 0, 'title' => 'North or South'),
@@ -786,7 +786,7 @@ array(
         ),
 //70
 array(
-            'title' => 'Two bus tickets from city A to B and three tickets from city A to C cost Rs. 77 \n
+            'title' => 'Two bus tickets from city A to B and three tickets from city A to C cost Rs. 77 <br/>
                         but three tickets from city A to B and two tickets from city A to C cost Rs. 73. What are the fares for cities B and C from A ?',
             'answer' => 1,
             'options' => serialize(array(array('id' => 0, 'title' => 'Rs. 4, Rs. 23'),
@@ -798,7 +798,7 @@ array(
         ),
 //71
 array(
-            'title' => 'A number of friends decided to go on a picnic and planned to spend Rs. 96 on eatables. Four of them, however, did not turn up.\n
+            'title' => 'A number of friends decided to go on a picnic and planned to spend Rs. 96 on eatables. Four of them, however, did not turn up.<br/>
                          As a consequence, the remaining ones had to contribute Rs. 4 each extra. The number of those who attended the picnic was',
             'answer' => 0,
             'options' => serialize(array(array('id' => 0, 'title' => '8'),
@@ -843,7 +843,7 @@ array(
         ),
 //75
 array(
-            'title' => 'A grandfather and his grandson have the same birthday date.\n 
+            'title' => 'A grandfather and his grandson have the same birthday date.<br/> 
                     For six consecutive birthdays the grandfather was a multiple of the grandson\'s age. How old were each at the sixth of these birthdays?',
             'answer' => 0,
             'options' => serialize(array(array('id' => 0, 'title' => 'Grandfather 66, grandson 6.'),
@@ -910,10 +910,10 @@ array(
         ),
 //81
 array(
-            'title' => 'Here are some words translated from an artificial language.\n
-                        migenlasan means cupboard\n
-                        lasanpoen means boardwalk\n
-                        cuopdansa means pullman\n
+            'title' => 'Here are some words translated from an artificial language.<br/>
+                        migenlasan means cupboard<br/>
+                        lasanpoen means boardwalk<br/>
+                        cuopdansa means pullman<br/>
                         Which word could mean "walkway"?',
             'answer' => 1,
             'options' => serialize(array(array('id' => 0, 'title' => 'poenmigen '),

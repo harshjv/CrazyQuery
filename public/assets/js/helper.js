@@ -66,7 +66,7 @@ window.fillQuestion = function(question) {
   var opts = window.shuffle(question.options.slice(0));
   var t;
 
-  $('#question_title').text(question.title);
+  $('#question_title').html(question.title);
 
   if(question.image_path) {
     $('#question_image').attr('href', question.image_path);
