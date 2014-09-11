@@ -8,7 +8,7 @@ class Questions extends Migration {
 	public function up() {
 		Schema::create('questions', function($table) {
 			$table->increments('id')->unsigned();
-			$table->string('title');
+			$table->text('title');
 			$table->text('options');
 			$table->string('image_path')->nullable();
 			$table->integer('answer');

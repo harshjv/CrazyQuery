@@ -4,6 +4,7 @@ class Question extends Eloquent {
 
     protected $table = 'questions';
     public $timestamps = false;
+    protected $hidden = array('answer');
 
     public function getOptionsAttribute($value) {
         $t = unserialize($value);

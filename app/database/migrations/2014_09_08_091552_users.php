@@ -17,9 +17,11 @@ class Users extends Migration {
             $table->string('last_name')->nullable();
             $table->string('enrolment_number')->nullable();
 
-            // USER'S CURRENT QUESTION AND QUESTION NUMBER
-            $table->integer('question_id')->default(0)->unsigned();
-            $table->integer('question_number')->default(0)->unsigned();
+            // GENERATE RANDOM QUESTION ID'S FOR EACH USER
+            $table->text('random_questions');
+
+            // USER'S CURRENT QUESTION POINTER
+            $table->integer('question_pointer')->default(0)->unsigned();
 
             // QUESTION TRACK
             $table->text('question_track')->nullable();

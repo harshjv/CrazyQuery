@@ -7,10 +7,6 @@ var skipHandler = function(e) {
     if(data.redirect) {
       window.location = data.redirect;
       return;
-    } else if(data.done) {
-      // Redirect now
-      window.location = "/result";
-      return;
     } else {
       fillQuestion(data.question);
       fillQuestionNumber(data.question_number);
@@ -33,16 +29,13 @@ var optionButtonHandler = function(e) {
   disableOptions();
 
   var ans = $(this).attr('data-opt-id');
+  var qid = $(this).attr('data-qid');
 
-  $.post('/api/answer', { answer: ans }, function(data) {
+  $.post('/api/answer', { question_id: qid, answer: ans }, function(data) {
 
     if(data.redirect) {
       window.location = data.redirect;
       return;
-    } else if(data.done) {
-      // Redirect now
-      window.location = "/result";
-      // alert("Yor're done");
     } else {
       fillQuestion(data.question);
       fillQuestionNumber(data.question_number);

@@ -36,7 +36,7 @@
         <td>{{{ $user->first_name }}} {{{ $user->last_name }}}</td>
         <td>{{{ $user->enrolment_number }}}</td>
         <td>{{ $user->score }}</td>
-        @if($user->done)
+        @if($user->ended_on)
           <td class="hidden-print">Done</td>
         @else
           <td class="hidden-print">In-progress</td>

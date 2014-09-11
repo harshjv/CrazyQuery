@@ -26,7 +26,7 @@ class ArenaController extends BaseController {
 
     public function finish() {
         $user = Auth::user();
-        $user->setScore();
+        $user->writeScore();
         $user->finish();
         $user->save();
 
@@ -43,13 +43,13 @@ class ArenaController extends BaseController {
         $s = Carbon::createFromFormat('Y-m-d H:i:s', $user->started_on);
         $e = Carbon::createFromFormat('Y-m-d H:i:s', $user->ended_on);
 
-        $min = $e->diffInMinutes($s);
+        $sec = $e->diffInSeconds($s);
+        $min = (int) ($sec / 60);
 
         if($min > $max_mins) {
             $time['m'] = $max_mins;
             $time['s'] = 0;
         } else {
-            $sec = $min * 60;
             $time['m'] = (int) ($sec / 60);
             $time['s'] = (int) ($sec % 60);
         }

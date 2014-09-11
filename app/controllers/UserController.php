@@ -17,9 +17,9 @@ class UserController extends BaseController {
             return Redirect::route('arena');
         } else {
             // NEW FRESH USER
-            $user->first_name = ucfirst(strtolower(self::spaces(Input::get('first_name'))));
-            $user->last_name = ucfirst(strtolower(self::spaces(Input::get('last_name'))));
-            $user->enrolment_number = ucfirst(strtolower(self::spaces(Input::get('enrolment_number'))));
+            $user->first_name = ucfirst(strtolower(trim(self::spaces(Input::get('first_name')))));
+            $user->last_name = ucfirst(strtolower(trim(self::spaces(Input::get('last_name')))));
+            $user->enrolment_number = ucfirst(strtolower(trim(self::spaces(Input::get('enrolment_number')))));
             $user->save();
         }
 

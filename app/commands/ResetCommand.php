@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ResetCommand extends Command {
 
-	protected $name = 'crazyquiz:reset';
+	protected $name = 'crazyquery:reset';
 	protected $description = 'Reset app';
 
 

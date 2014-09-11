@@ -31,7 +31,7 @@
 <div class="container text-center yo-main">
   <h4><span class="text-primary" id="question_th"></span><sup class="text-muted" id="question_th_suffix"></sup> Query</h4>
   <a href="" id="question_image" class="display:none" target="_blank"><img src="" class="img-thumbnail question-image"></a>
-  <h4 class="no-margin" id="question_title"></h4>
+  <p class="no-margin" id="question_title"></p>
   <br/>
   <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2"></div>

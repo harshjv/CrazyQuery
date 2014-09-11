@@ -15,37 +15,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = false;
 
+    public function getQuestionNumberAttribute() {
+        return $this->question_pointer + 1;
+    }
+
+    public function getRandomQuestionsAttribute($value) {
+        return unserialize($value);
+    }
+
+    public function setRandomQuestionsAttribute($value) {
+        $this->attributes['random_questions'] = serialize($value);
+    }
+
     public function getQuestionTrackAttribute($value) {
-        Log::info($value);
         if(is_null($value)) return array();
         return unserialize($value);
     }
 
     public function setQuestionTrackAttribute($value) {
         $this->attributes['question_track'] = serialize($value);
-    }
-
-    public function resetMe() {
-        $this->first_name = NULL;
-        $this->last_name = NULL;
-
-        $this->enrolment_number = NULL;
-
-        $this->question_id = 0;
-        $this->questions_served_count = 0;
-
-        $this->questions_served = NULL;
-        $this->question_track = NULL;
-
-        $this->points = 0;
-
-        $this->correct_answers = 0;
-        $this->incorrect_answers = 0;
-        $this->skipped_questions = 0;
-
-        $this->done = false;
-        $this->started_on = NULL;
-        $this->ended_on = NULL;
     }
 
     public function correctAnswer($multiplier) {
@@ -58,15 +46,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $this->score -= $this->incorrect_count * $multiplier;
     }
 
-    public function setScore() {
+    public function writeScore() {
         $t = $this->question_track;
-        $t[$this->question_number] = $this->score;
+        $t[$this->question_pointer] = $this->score;
         $this->question_track = $t;
     }
 
-    public function setNextQuestion($question) {
-        $this->question_number++;
-        $this->question_id = $question->id;
+    public function getQuestionID() {
+        $t = $this->random_questions;
+
+        return $t[$this->question_pointer];
+    }
+
+    public function nextQuestion() {
+        $this->question_pointer++;
+
+        return $this->getQuestionID();
     }
 
     public function start() {

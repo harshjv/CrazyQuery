@@ -79,6 +79,7 @@ window.fillQuestion = function(question) {
   for (var i = 0; i < opts.length; i++) {
     t = $('#option_'+i);
     t.text(opts[i].title);
-    t.attr('data-opt-id', opts[i].id)
+    t.attr('data-opt-id', opts[i].id);
+    t.attr('data-qid', question.id);
   };
 };

@@ -22,12 +22,12 @@ $(window).on('first_answer', function(e, n, v) {
   });
 });
 
-$(window).on('fill_answer', function(e, val) {
+$(window).on('fill_answer', function(e, vals) {
   var keys = [];
   keys[0] = "Start";
+  vals.unshift(0);
 
   var c = 0;
-  var vals = JSON.parse(val);
   vals[0] = 0;
 
   $.each(vals, function(e) {
