@@ -175,7 +175,7 @@ return array(
 		'Paginator'       => 'Illuminate\Support\Facades\Paginator',
 		'Password'        => 'Illuminate\Support\Facades\Password',
 		'Queue'           => 'Illuminate\Support\Facades\Queue',
-		'Redirect'        => 'Illuminate\Support\Facades\Redirect',
+		#'Redirect'        => 'Illuminate\Support\Facades\Redirect',
 		'Redis'           => 'Illuminate\Support\Facades\Redis',
 		'Request'         => 'Illuminate\Support\Facades\Request',
 		'Response'        => 'Illuminate\Support\Facades\Response',
@@ -190,6 +190,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Debugbar'		  => 'Barryvdh\Debugbar\Facade',
+		#'Response'        => 'CrazyQuery\Facades\Response',
+		'Redirect'        => 'CrazyQuery\Facades\Redirect',
 
 	),
 

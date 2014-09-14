@@ -4,6 +4,7 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Carbon\Carbon;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -70,6 +71,65 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public function finish() {
         $this->ended_on = new \DateTime();
+    }
+
+    public function earlyFinish($max_mins) {
+        $s = Carbon::createFromFormat('Y-m-d H:i:s', $this->started_on);
+        $this->ended_on = $s->addMinutes($max_mins);
+    }
+
+    public function isStarted() {
+        if( ! is_null($this->started_on)) return true;
+        else return false;
+    }
+
+    public function isFinished() {
+        if($this->isStarted() && ! is_null($this->ended_on)) return true;
+        else return false;
+    }
+
+    public function isInProgress() {
+        if($this->isStarted() && ! $this->isFinished()) return true;
+        else return false;
+    }
+
+    public function isFresh() {
+        if( ! $this->isStarted() && ! $this->isFinished()) return true;
+        else return false;
+    }
+
+    public function isClockExpired($max_mins) {
+        $s = Carbon::createFromFormat('Y-m-d H:i:s', $this->started_on);
+        $n = Carbon::now();
+
+        $sec = $n->diffInSeconds($s);
+
+        if($sec > ($max_mins * 60)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getRemainingSeconds($total_time) {
+        $now = Carbon::now();
+        $start = Carbon::createFromFormat('Y-m-d H:i:s', $this->started_on);
+        $start->addMinutes($total_time);
+
+        return $now->diffInSeconds($start);
+    }
+
+    public function getDuration() {
+        $s = Carbon::createFromFormat('Y-m-d H:i:s', $this->started_on);
+        $e = Carbon::createFromFormat('Y-m-d H:i:s', $this->ended_on);
+
+        $diff = $e->diffInSeconds($s);
+
+        $sec = (int) ($diff % 60);
+        $min = (int) (($diff / 60) % 60);
+        $hr = (int) ($diff / 3600);
+
+        return sprintf('%02d:%02d:%02d', $hr, $min, $sec);
     }
 
 }

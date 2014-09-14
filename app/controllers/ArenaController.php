@@ -21,54 +21,30 @@ class ArenaController extends BaseController {
         $user->start();
         $user->save();
 
-        return Redirect::to('arena');
-    }
-
-    public function finish() {
-        $user = Auth::user();
-        $user->writeScore();
-        $user->finish();
-        $user->save();
-
-        return Redirect::route('result');
+        return Redirect::route('arena');
     }
 
     public function result() {
         $user = Auth::user();
 
-        $max_mins = Config::get('crazyquery.total_time');
-
-        // COMPLETED
-        // SHOW RESULT
-        $s = Carbon::createFromFormat('Y-m-d H:i:s', $user->started_on);
-        $e = Carbon::createFromFormat('Y-m-d H:i:s', $user->ended_on);
-
-        $sec = $e->diffInSeconds($s);
-        $min = (int) ($sec / 60);
-
-        if($min > $max_mins) {
-            $time['m'] = $max_mins;
-            $time['s'] = 0;
-        } else {
-            $time['m'] = (int) ($sec / 60);
-            $time['s'] = (int) ($sec % 60);
-        }
-
-        if($time['m'] < 10) {
-            $time['m'] = '0' . $time['m'];
-        }
-
-        if($time['s'] < 10) {
-            $time['s'] = '0' . $time['s'];
-        }
-
-        return View::make('result', compact('user', 'time'));
+        return View::make('result', compact('user'));
     }
 
     public function logout() {
         Auth::logout();
 
         return Redirect::route('home');
+    }
+
+    public function proper_redirect() {
+        $user = Auth::user();
+        if($user->isFresh()) {
+            return Redirect::ajaxAwareRoute('start');
+        } else  if($user->isInProgress()) {
+            return Redirect::ajaxAwareRoute('arena');
+        } else {
+            return Redirect::ajaxAwareRoute('result');
+        }
     }
 
 }

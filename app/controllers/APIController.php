@@ -2,7 +2,19 @@
 
 use Carbon\Carbon;
 
-class APIController extends AjaxController {
+class APIController extends CrazyController {
+
+    public function finish() {
+        if($this->user->isClockExpired($config['total_time'])) {
+            $this->user->earlyFinish($config['total_time']);
+        } else {
+            $this->user->finish();
+        }
+        $this->user->writeScore();
+        $this->user->save();
+
+        return Redirect::ajaxRoute('result');
+    }
 
     public function init() {
         $qid = $this->user->getQuestionID();
@@ -26,7 +38,7 @@ class APIController extends AjaxController {
         $qid = $this->user->getQuestionID();
 
         if($qid != $question_id) {
-            return $this->ajaxRedirectToRoute('arena');
+            return Redirect::ajaxRoute('arena');
         }
 
         $question = $this->getQuestion($qid);//Question::find($qid);
@@ -46,7 +58,7 @@ class APIController extends AjaxController {
             $this->user->finish();
             $this->user->save();
 
-            return $this->ajaxRedirectToRoute('result');
+            return Redirect::ajaxRoute('result');
         }
 
         $qid = $this->user->nextQuestion();
@@ -60,10 +72,7 @@ class APIController extends AjaxController {
     }
 
     public function clock() {
-        $c = Carbon::createFromFormat('Y-m-d H:i:s', $this->user->started_on);
-        $c->addMinutes($this->config['total_time']);
-
-        return Response::json(Carbon::now()->diffInSeconds($c) * 1000);
+        return Response::json($this->user->getRemainingSeconds($this->config['total_time']));
     }
 
 }

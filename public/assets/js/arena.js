@@ -47,9 +47,6 @@ var optionButtonHandler = function(e) {
         $(window).trigger('first_answer', [ data.question_number - 1, parseInt(data.score) ]);
       } else {
         window.chart.addData([parseInt(data.score)], ""+(data.question_number - 1)+"");
-        // window.chart.update();
-        // window.chart.resize();
-        // window.chart.render();
       }
       enableOptions();
     }
@@ -72,6 +69,17 @@ $(document).ready(function() {
     }
 
     $('.option_buttons').bind('click', optionButtonHandler);
+
+    $('#finish').click(function(e) {
+      e.preventDefault();
+      disableOptions();
+      $.post('/api/finish', function() {
+        if(data.redirect) {
+          window.location = data.redirect;
+          return;
+        }
+      })
+    });
   });
   
 });

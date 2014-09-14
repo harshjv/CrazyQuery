@@ -1,23 +1,22 @@
 $(document).ready(function() {
 
     $.post('/api/clock', function(data) {
-
         if(data.redirect) {
             window.location = data.redirect;
             return;
         }
 
-        var countdown = Tock({
-            countdown: true,
-            interval: 1000,
-            callback: function () {
-                $('#clock').text(countdown.msToTime(countdown.lap()));
-            },
-            complete: function () {
-                window.location = "/finish";
+        $('#clock').timeTo({
+            seconds: data,
+            fontFamily: 'inherit',
+            callback: function() {
+                $.post('/api/finish', function(data) {
+                    if(data.redirect) {
+                        window.location = data.redirect;
+                        return;
+                    }
+                })
             }
         });
-
-        countdown.start(countdown.timeToMS(data));
     });
 });

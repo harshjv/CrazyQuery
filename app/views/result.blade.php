@@ -18,7 +18,7 @@
     </div>
     <div class="col-lg-4 text-center"></div>
     <div class="col-lg-4 text-right">
-      <h3><span class="text-primary"><i class="fa fa-clock-o fa-flip-horizontal"></i></span> 00:{{ $time['m'] }}:{{ $time['s'] }}</h3>
+      <h3><span class="text-primary"><i class="fa fa-clock-o fa-flip-horizontal"></i></span> {{ $user->getDuration() }}</h3>
     </div>
   </div>
 </div>

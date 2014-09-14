@@ -1,8 +1,6 @@
 <?php
 
-use Carbon\Carbon;
-
-class AjaxController extends BaseController {
+class CrazyController extends BaseController {
 
     protected $user;
     protected $config;
@@ -36,10 +34,6 @@ class AjaxController extends BaseController {
         $this->response['score'] = $this->user->score;
         $this->response['correct_score'] = ($this->user->correct_count + 1) * $this->config['correct_multiplier'];
         $this->response['incorrect_score'] = ($this->user->incorrect_count + 1) * $this->config['incorrect_multiplier'];
-    }
-
-    protected function ajaxRedirectToRoute($route_name) {
-        return Response::json(array('redirect' => route($route_name)));
     }
 
 }

@@ -33,62 +33,42 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('incomplete', function() {
-
+Route::filter('valid_clock', function() {
     $user = Auth::user();
+    if($user->isClockExpired(Config::get('crazyquery.total_time'))) {
+        $user->earlyFinish(Config::get('crazyquery.total_time'));
+        $user->writeScore();
+        $user->save();
 
-    if( ! is_null($user->ended_on)) {
-        // COMPLETED
-        return Redirect::route('result');
-    }
-
-});
-
-Route::filter('complete', function() {
-
-    $user = Auth::user();
-
-    if(is_null($user->ended_on)) {
-        // IN-COMPLETE
-        return Redirect::route('start');
-    }
-
-});
-
-Route::filter('in-progress', function() {
-	$user = Auth::user();
-
-    if( ! is_null($user->ended_on)) {
-        // COMPLETED
-        return Response::json(array('redirect' => route('result')));
-    } else if( ! is_null($user->started_on)) {
-        // RETURNING USER
-        // IN-COMPLETE
-        // CONTINUE
-    } else {
-        // NEW FRESH USER
-        return Response::json(array('redirect' => route('start')));
+        return Redirect::ajaxAwareRoute('result');
     }
 });
 
-Route::filter('auth', function()
-{
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::json(array('redirect' => route('home')));
-		}
-		else
-		{
-			return Redirect::route('home');
-		}
+Route::filter('fresh', function() {
+    if( ! Auth::user()->isFresh()) {
+        return Redirect::ajaxAwareRoute('proper_redirect');
+    }
+});
+
+Route::filter('in_progress', function() {
+    if( ! Auth::user()->isInProgress()) {
+        return Redirect::ajaxAwareRoute('proper_redirect');
+    }
+});
+
+Route::filter('finished', function() {
+    if( ! Auth::user()->isFinished()) {
+        return Redirect::ajaxAwareRoute('proper_redirect');
+    }
+});
+
+Route::filter('auth', function() {
+	if (Auth::guest()) {
+        return Redirect::ajaxAwareRoute('home');
 	}
 });
 
-
-Route::filter('auth.basic', function()
-{
+Route::filter('auth.basic', function() {
 	return Auth::basic();
 });
 
@@ -103,8 +83,7 @@ Route::filter('auth.basic', function()
 |
 */
 
-Route::filter('guest', function()
-{
+Route::filter('guest', function() {
 	if (Auth::check()) return Redirect::route('start');
 });
 
@@ -119,8 +98,7 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('csrf', function()
-{
+Route::filter('csrf', function() {
 	if (Session::token() != Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;

@@ -28,7 +28,7 @@ class UserController extends BaseController {
             $user->save();
         }
 
-        return Redirect::to('start');
+        return Redirect::route('proper_redirect');
     }
     else {
       return Redirect::back()->withInput(Input::except('password'));
@@ -38,7 +38,7 @@ class UserController extends BaseController {
 
   public function logout() {
     Auth::logout();
-    return Redirect::to('/');
+    return Redirect::route('logout');
   }
 
   public static function string($string)
