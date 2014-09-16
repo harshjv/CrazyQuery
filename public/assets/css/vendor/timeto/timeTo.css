@@ -1,5 +1,5 @@
 figure, figcaption {
-	display: block;
+    display: block;
 }
 
 .transition {
@@ -11,19 +11,19 @@ figure, figcaption {
 }
 
 .timeTo {
-	font-family: Tahoma, Verdana, Aial, sans-serif;
-	font-size: 28px;
-	line-height: 108%;
-	font-weight: bold;
-	height: 32px;
+    /*font-family: Tahoma, Verdana, Aial, sans-serif;*/
+    /*font-size: 28px;*/
+    line-height: 108%;
+    font-weight: bold;
+    height: 32px;
 }
 
 .timeTo span {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 .timeTo.timeTo-white div {
-	color: black;
+    color: black;
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 38%, #eeeeee 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(38%,#ffffff), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
@@ -46,38 +46,38 @@ figure, figcaption {
 }
 
 .timeTo figure {
-	display: inline-block;
-	margin: 0;
-	padding: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
 }
 .timeTo figcaption {
-	text-align: center;
-	/*font-size: 12px;*/
-	line-height: 80%;
-	font-weight: normal;
-	color: #888;
+    text-align: center;
+    /*font-size: 12px;*/
+    line-height: 80%;
+    font-weight: normal;
+    color: #888;
 }
 
 .timeTo div {
-	position: relative;
-	display: inline-block;
-	/*width: 25px;
-	height: 30px;*/
-	border-top: 1px solid #dddddd;
-	border-right: 1px solid #dddddd;
-	border-bottom: 1px solid #dddddd;
-	overflow: hidden;
+    position: relative;
+    display: inline-block;
+    /*width: 25px;
+    height: 30px;*/
+    border-top: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    overflow: hidden;
 }
 .timeTo div.first {
-	border-left: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
 }
 
 .timeTo ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	left: 3px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 3px;
 }
 
 .timeTo ul li {

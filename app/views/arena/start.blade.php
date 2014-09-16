@@ -1,10 +1,10 @@
-@extends('base.layout')
+@extends('layout')
 
 @section('body')
 <div class="container top-brand">
   <div class="row">
     <div class="col-lg-6 text-left">
-      <h3><span class="text-primary">Crazy</span>Query</h3>
+      {{ Config::get('crazyquery.logo') }}
     </div>
   </div>
 </div>

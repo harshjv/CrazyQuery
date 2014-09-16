@@ -41,64 +41,8 @@ class UserController extends BaseController {
     return Redirect::route('logout');
   }
 
-  public static function string($string)
-    {
-        $string = self::space($string);
-        $string = self::commas($string);
-        $string = self::amps($string);
-
-        return trim($string);
-    }
-
-    public static function text($string)
-    {
-        $string = self::commas($string);
-        $string = self::amps($string);
-        $string = self::lines($string);
-        $string = nl2br($string);
-
-        return self::space($string);
-    }
-
-    public static function authors($string)
-    {
-        $string = self::commas($string);
-        $string = self::amps($string);
-        $string = self::space($string);
-
-        return ucwords(strtolower($string));
-    }
-
-    public static function lines($string)
-    {
-        return preg_replace("/[\r\n]{3,}/", "\r\n\r\n", trim($string));
-    }
-
-    public static function spaces($string)
-    {
-        return preg_replace('/\s+/', ' ', trim($string));
-    }
-
-    public static function commas($string)
-    {
-        $string = preg_replace_callback('/\s*,\s*', function($match) {
-            return ", ";
-        }, $string);
-
-        $string = preg_replace('/^,\s?|,$/', '', trim($string));
-
-        return $string;
-    }
-
-    public static function amps($string)
-    {
-        $string = preg_replace_callback('/\s*&\s*', function($match) {
-            return "& ";
-        }, $string);
-
-        $string = preg_replace('/^&\s?|&$/', '', trim($string));
-
-        return $string;
-    }
+  public static function spaces($string) {
+    return preg_replace('/\s+/', ' ', trim($string));
+  }
 
 }

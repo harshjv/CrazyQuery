@@ -16,8 +16,8 @@
   </head>
   <body>
     @yield('body')
-    <script src="/assets/js/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
     @yield('js')
   </body>
 </html>

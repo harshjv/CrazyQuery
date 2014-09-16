@@ -1,16 +1,16 @@
-@extends('base.layout')
+@extends('layout')
 
 @section('body')
 <div class="container top-brand">
   <div class="row">
     <div class="col-lg-6 text-left">
-      <h3><span class="text-primary">Crazy</span>Query</h3>
+      {{ Config::get('crazyquery.logo') }}
     </div>
   </div>
 </div>
 <div class="container text-center yo-main">
   <div class="row">
-    <div class="col-lg-4 col-lg-offset-4">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
       {{ Form::open(array('route' => 'login_check')) }}
         <form role="form">
           <div class="form-group text-left">

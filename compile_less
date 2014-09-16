@@ -1,3 +1,1 @@
-#! /usr/bin/env sh
-
-lessc -x ./public/assets/less/style.less ./public/assets/css/style.min.css
+lessc -x "public/assets/less/style.less" "public/assets/css/style.min.css"

@@ -1,33 +1,28 @@
-@extends('base.layout')
+@extends('layout')
 
 @section('css')
-  <link href="/assets/css/vendor/timeto/timeTo.css" rel="stylesheet">
+  <link href="{{ asset('assets/css/vendor/timeto/timeTo.min.css') }}" rel="stylesheet">
 @stop
 
 @section('js')
-  <script src="/assets/js/vendor/chart/chart.min.js"></script>
-  <script src="/assets/js/vendor/tock/tock.min.js"></script>
-  <script src="/assets/js/vendor/timeto/jquery.timeTo.min.js"></script>
-  
-  <script src="/assets/js/arena.min.js"></script>
-  <script src="/assets/js/chart.min.js"></script>
-  <script src="/assets/js/helper.min.js"></script>
-
-  <script src="/assets/js/clock.js"></script>
+  <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
+  <script src="{{ asset('assets/js/vendor/jquery.timeTo.min.js') }}"></script>
+  <script src="{{ asset('assets/js/helper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/arena.min.js') }}"></script>
 @stop
 
 @section('body')
 <div class="container top-brand">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-left">
-      <h3><span class="text-primary">Crazy</span>Query</h3>
+      {{ Config::get('crazyquery.logo') }}
       <h4 class="no-margin-bottom"><span class="text-primary">{{{ $user->first_name }}}</span> {{{ $user->last_name }}}</h4>
       <h4 class="no-margin"><small>{{ $user->enrolment_number }}</small></h4>
       <h5 class="no-margin"><small>{{ $user->username }}</small></h5>
+      <a href="{{ route('logout') }}"><small>Logout</small></a>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" style="padding-top:22px">
       <span id="clock"></span>
-      <!-- <h3><span class="text-primary"><i class="fa fa-clock-o fa-flip-horizontal"></i></span> </h3> -->
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-right">
       <h3><span class="text-primary">Points</span> <span id="points"></span></h3>
@@ -53,7 +48,7 @@
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2"></div>
   </div>
-  <h4><small>Correct answer +<span id="right"></span> / Incorrect answer -<span id="wrong"></span></small></h4>
+  <h4><small>Correct answer +<span id="correct"></span> / Incorrect answer -<span id="incorrect"></span></small></h4>
   <p><a href=""id="skip">Skip <i class="fa fa-angle-right"></i></a> <a href="" id="finish">Finish <i class="fa fa-angle-right"></i></a></p>
 </div>
 

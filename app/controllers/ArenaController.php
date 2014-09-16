@@ -1,19 +1,17 @@
 <?php
 
-use Carbon\Carbon;
-
 class ArenaController extends BaseController {
 
     public function handle() {
         $user = Auth::user();
 
-        return View::make('arena', compact('user'));
+        return View::make('arena/index', compact('user'));
     }
 
     public function start() {
         $user = Auth::user();
 
-        return View::make('start', compact('user'));
+        return View::make('arena/start', compact('user'));
     }
 
     public function start_session() {
@@ -27,7 +25,7 @@ class ArenaController extends BaseController {
     public function result() {
         $user = Auth::user();
 
-        return View::make('result', compact('user'));
+        return View::make('arena/result', compact('user'));
     }
 
     public function logout() {
@@ -46,5 +44,4 @@ class ArenaController extends BaseController {
             return Redirect::ajaxAwareRoute('result');
         }
     }
-
 }

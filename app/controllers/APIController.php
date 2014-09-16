@@ -1,15 +1,9 @@
 <?php
 
-use Carbon\Carbon;
-
 class APIController extends CrazyController {
 
     public function finish() {
-        if($this->user->isClockExpired($config['total_time'])) {
-            $this->user->earlyFinish($config['total_time']);
-        } else {
-            $this->user->finish();
-        }
+        $this->user->finish();
         $this->user->writeScore();
         $this->user->save();
 

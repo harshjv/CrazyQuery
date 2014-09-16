@@ -1,15 +1,24 @@
-@extends('base.layout')
+@extends('layout')
 
 @section('js')
-  <script src="/assets/js/helper.min.js"></script>
-  <script src="/assets/js/score.min.js"></script>
+  <script src="{{ asset('assets/js/helper.min.js') }}"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var k = $('.rank-num');
+
+    $('.rank-num').each(function( index ) {
+      $(this).append('<sup>'+suffix(parseInt($(this).text()))+'</sup>');
+    });
+  });
+  </script>
 @stop
 
 @section('body')
 <div class="container top-brand">
   <div class="row">
     <div class="col-lg-4 text-left">
-      <h3><span class="text-primary">Crazy</span>Query</h3>
+      {{ Config::get('crazyquery.logo') }}
     </div>
   </div>
 </div>
