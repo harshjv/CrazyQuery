@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => getenv("LARAVEL_DEBUG"),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://crazyquery/',
+	'url' => getenv("APP_URL"),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'm4LSPy6vCP5NMgI2z0JgyiIJ7OjM4Qeo',
+	'key' => getenv("APP_SECRET"),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
